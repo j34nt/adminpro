@@ -17,6 +17,8 @@ import { PAGES_ROUTES } from './pages.routes';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficaDonasComponent } from '../components/grafica-donas/grafica-donas.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +28,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         PagesComponent,
         IncrementadorComponent,
         GraficaDonasComponent,
-        AccountSettingsComponent
+        AccountSettingsComponent,
+        PromesasComponent,
+        RxjsComponent
     ],
     imports: [
         CommonModule,
