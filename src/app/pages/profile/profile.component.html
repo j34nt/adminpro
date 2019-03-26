@@ -1,0 +1,41 @@
+<div class="row animated fadeIn">
+    <div class="col-md-7">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Perfil del Usuario</h3>
+            <p class="text-muted m-b-30 font-13"> Ingresa tu Informacion </p>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre de Usuario</label>
+                            <input type="text" [ngModel]="usuario.nombre" class="form-control" name="nombre" placeholder="Nombre de Usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email de Usuario</label>
+                            <input type="email" [ngModel]="usuario.email" [disabled]="usuario.google" class="form-control" name="email" placeholder="Ingresa email">
+                        </div>
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                          <i class="fa fa-save"></i>
+                          Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Fotografia del Usuario</h3>
+            <p class="text-muted m-b-30 font-13"> Selecciona Imagen </p>
+            <div class="col-md-4">
+                <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="img-circle img-responsive" alt="">
+                <img *ngIf="imagenTemp" [src]="imagenTemp" class="img-circle img-responsive" alt="">
+            </div>
+            <input type="file" (change)="seleccionImagen($event.target.files[0])">
+            <br>
+            <button type="submit" (click)="cambiarImagen()" [disabled]="!imagenSubir" class="btn btn-success waves-effect waves-light m-r-10">
+                <i class="fa fa-save"></i>
+                Actualizar</button>
+        </div>
+    </div>
+</div>

@@ -13,12 +13,15 @@ import { SharedModule } from '../shared/shared.module';
 // routes
 import { PAGES_ROUTES } from './pages.routes';
 
+import { PipesModule } from '../pipes/pipes.module';
+
 // temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficaDonasComponent } from '../components/grafica-donas/grafica-donas.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
     declarations: [
@@ -30,14 +33,16 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         GraficaDonasComponent,
         AccountSettingsComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent
     ],
     imports: [
         CommonModule,
         SharedModule,
         PAGES_ROUTES,
         FormsModule,
-        ChartsModule
+        ChartsModule,
+        PipesModule
     ],
     exports: [
         DashboardComponent,
