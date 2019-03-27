@@ -20,7 +20,6 @@ export class UsuarioService {
     public router: Router,
     public _subirArchivoService: SubirArchivoService
   ) {
-    console.log('Servicio usuario listo');
     this.cargaStorage();
   }
 
@@ -104,9 +103,12 @@ export class UsuarioService {
 
     return this.http.put(url, usuario).pipe(
                   map((resp: any) => {
-                    const usuarioDB: Usuario = resp.usuario;
-                    // this.usuario = resp.usuario;
-                    this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+                    if (usuario._id === this.usuario._id) {
+                      const usuarioDB: Usuario = resp.usuario;
+                      // this.usuario = resp.usuario;
+                      this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+
+                    }
                     swal('Usuario Actualizado', usuario.nombre, 'success');
 
                     return true;
@@ -117,10 +119,34 @@ export class UsuarioService {
   cambiarImagen(file: File, id: string) {
     this._subirArchivoService.subirArchivo(file, 'usuarios', id)
             .subscribe((resp: any) => {
-              console.log(resp);
               this.usuario.img = resp.usuario.img;
               swal('Imagen Actualizada', this.usuario.nombre, 'success');
               this.guardarStorage(id, this.token, this.usuario);
             });
+  }
+
+  cargarUsuarios(desde: number = 0) {
+    const url = URL_SERVICIOS + 'usuario?desde=' + desde;
+
+    return this.http.get(url);
+  }
+
+  buscarUsuario(termino: string) {
+    const url = URL_SERVICIOS + 'busqueda/coleccion/usuarios/' + termino;
+    return this.http.get(url).pipe(
+                  map((resp: any) => resp.usuarios)
+    );
+  }
+
+  borrarUsuario(id: string) {
+    let url = URL_SERVICIOS + 'usuario/' + id;
+    url += '?token=' + this.token;
+
+    return this.http.delete(url).pipe(
+                  map((resp: any) => {
+                    swal('Usuario Borrado', 'El usuario ha sido eliminado correctamente', 'success');
+                    return true;
+                  })
+    );
   }
 }
