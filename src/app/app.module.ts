@@ -13,6 +13,8 @@ import { RegisterComponent } from './login/register.component';
 import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceModule } from './services/service.module';
+import { PagesComponent } from './pages/pages.component';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -20,6 +22,7 @@ import { ServiceModule } from './services/service.module';
 @NgModule({
   declarations: [
     AppComponent,
+    PagesComponent,
     LoginComponent,
     RegisterComponent,
     NopagefoundComponent
@@ -27,10 +30,11 @@ import { ServiceModule } from './services/service.module';
   imports: [
     BrowserModule,
     APP_ROUTES,
-    PagesModule,
+    // PagesModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceModule
+    ServiceModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

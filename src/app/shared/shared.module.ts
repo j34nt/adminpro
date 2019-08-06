@@ -7,18 +7,25 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { PipesModule } from '../pipes/pipes.module';
+import { ModalUploadsComponent } from '../components/modal-uploads/modal-uploads.component';
 
 @NgModule({
     declarations: [
         BreadcrumbsComponent,
         HeaderComponent,
-        SidebarComponent
+        SidebarComponent,
+        ModalUploadsComponent
     ],
-    imports: [ CommonModule, RouterModule, PipesModule ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        PipesModule,
+    ],
     exports: [
         BreadcrumbsComponent,
         HeaderComponent,
-        SidebarComponent
+        SidebarComponent,
+        ModalUploadsComponent
 
     ],
     providers: [],
